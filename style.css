@@ -1,0 +1,167 @@
+/* ===========================================================
+   Joan Ogeto — shared styles for all pages
+   Edit colours once here and every page updates.
+   =========================================================== */
+:root{
+  --paper:#F4EEE2;
+  --card:#FBF7EE;
+  --ink:#22201A;
+  --soft:#6A6153;
+  --line:#D8CFBD;
+  --green:#234A3C;
+  --green-deep:#1A382D;
+  --brass:#A97722;
+  --btn-fg:#F4EEE2;
+  --panel-bg:#234A3C;
+  --panel-fg:#F4EEE2;
+  --panel-accent:#D8B877;
+  --panel-em:#E4C88A;
+  --panel-border:rgba(244,238,226,.5);
+  --foot-bg:#1A382D;
+  --foot-fg:rgba(244,238,226,.72);
+  --max:1080px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  background:var(--paper);color:var(--ink);
+  font-family:'Inter',system-ui,sans-serif;line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  transition:background-color .3s ease,color .3s ease;
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 30px}
+.label{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600}
+
+/* ---------- navigation ---------- */
+.nav{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.nav .name{font-family:'Fraunces';font-weight:600;font-size:1.1rem;letter-spacing:-.01em}
+.nav .name b{color:var(--green)}
+.nav .links{display:flex;gap:26px;align-items:center}
+.nav .links a{color:var(--soft);font-size:.85rem;transition:color .2s}
+.nav .links a:hover,.nav .links a.active{color:var(--green)}
+.nav .burger{display:none;background:none;border:0;cursor:pointer;font-size:1.5rem;color:var(--ink);line-height:1}
+@media(max-width:640px){
+  .nav .burger{display:block}
+  .nav .links{position:absolute;top:60px;left:0;right:0;flex-direction:column;gap:0;background:var(--paper);border-bottom:1px solid var(--line);max-height:0;overflow:hidden;transition:max-height .3s ease}
+  .nav .links.open{max-height:320px}
+  .nav .links a{padding:16px 30px;width:100%;border-top:1px solid var(--line);font-size:1rem}
+}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-block;font-size:.9rem;font-weight:500;padding:13px 24px;border-radius:2px;transition:all .2s;border:1px solid var(--ink);cursor:pointer}
+.btn.solid{background:var(--green);border-color:var(--green);color:var(--btn-fg)}
+.btn.solid:hover{background:var(--green-deep);border-color:var(--green-deep)}
+.btn.ghost:hover{background:var(--ink);color:var(--paper)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+
+/* ---------- home hero ---------- */
+.hero{padding:96px 0 70px;border-bottom:2px solid var(--ink)}
+.hero .eyebrow{color:var(--brass);margin-bottom:34px}
+.hero h1{font-family:'Fraunces';font-weight:600;font-size:clamp(3rem,10vw,7rem);line-height:.92;letter-spacing:-.03em}
+.hero h1 .sub{display:block;font-size:clamp(1.1rem,3vw,1.7rem);color:var(--green);font-weight:500;font-style:italic;letter-spacing:-.01em;margin-top:20px;max-width:22ch;line-height:1.15}
+.hero .lede{margin-top:34px;max-width:600px;font-size:1.1rem;color:var(--soft)}
+.hero .lede b{color:var(--ink);font-weight:600}
+.hero .cta-row{margin-top:38px;display:flex;flex-wrap:wrap;gap:14px}
+
+/* ---------- inner page header ---------- */
+.pagehead{padding:70px 0 46px;border-bottom:2px solid var(--ink)}
+.pagehead .eyebrow{color:var(--brass);margin-bottom:20px}
+.pagehead h1{font-family:'Fraunces';font-weight:600;font-size:clamp(2.4rem,6vw,4rem);line-height:1;letter-spacing:-.02em}
+.pagehead p{margin-top:22px;max-width:60ch;font-size:1.1rem;color:var(--soft)}
+
+/* ---------- generic section ---------- */
+.sec{padding:66px 0;border-bottom:1px solid var(--line)}
+.sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:14px}
+.sec-head .k{color:var(--brass)}
+.sec-head .rule{flex:1;height:1px;background:var(--line);align-self:center}
+.sec-title{font-family:'Fraunces';font-weight:600;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-.02em;margin-bottom:8px}
+.sec-intro{color:var(--soft);max-width:60ch;margin-bottom:40px}
+
+/* ---------- services overview (cards) ---------- */
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.svc{background:var(--paper);padding:30px 26px 34px;transition:background .2s;display:block}
+.svc:hover{background:var(--card)}
+.svc .no{font-family:'Fraunces';color:var(--brass);font-size:1.3rem;font-weight:500}
+.svc h3{font-family:'Fraunces';font-weight:600;font-size:1.35rem;letter-spacing:-.01em;margin:10px 0 10px}
+.svc p{color:var(--soft);font-size:.96rem}
+.svc .more{margin-top:16px;color:var(--green);font-weight:600;font-size:.85rem}
+.svc:hover .more{color:var(--brass)}
+
+/* ---------- service detail body ---------- */
+.detail{padding:60px 0;border-bottom:1px solid var(--line)}
+.detail-grid{display:grid;grid-template-columns:1fr;gap:44px}
+@media(min-width:820px){.detail-grid{grid-template-columns:1.4fr 1fr}}
+.detail h2{font-family:'Fraunces';font-weight:600;font-size:1.6rem;margin-bottom:16px;letter-spacing:-.01em}
+.detail p{color:var(--soft);margin-bottom:16px;max-width:64ch}
+.detail ul{list-style:none;margin:8px 0 8px}
+.detail ul li{padding:11px 0 11px 26px;border-bottom:1px dashed var(--line);position:relative;color:var(--ink)}
+.detail ul li::before{content:"→";position:absolute;left:0;color:var(--brass)}
+.aside{background:var(--card);border:1px solid var(--line);padding:28px;height:fit-content}
+.aside h4{font-family:'Fraunces';font-weight:600;font-size:1.15rem;margin-bottom:12px}
+.aside p{color:var(--soft);font-size:.94rem;margin-bottom:18px}
+
+/* ---------- process steps ---------- */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:26px}
+.step{border-top:2px solid var(--green);padding-top:18px}
+.step .n{font-family:'Fraunces';color:var(--brass);font-size:.9rem;letter-spacing:.1em;margin-bottom:10px;display:block}
+.step h4{font-family:'Fraunces';font-weight:600;font-size:1.2rem;margin-bottom:8px}
+.step p{color:var(--soft);font-size:.94rem}
+
+/* ---------- about ---------- */
+.about p{font-size:1.15rem;line-height:1.65;max-width:62ch;font-family:'Fraunces';font-weight:400;color:var(--ink);margin-bottom:18px}
+
+/* ---------- contact ---------- */
+.contact{background:var(--panel-bg);color:var(--panel-fg);padding:88px 0}
+.contact .k{color:var(--panel-accent)}
+.contact h2{font-family:'Fraunces';font-weight:600;font-size:clamp(2rem,5.5vw,3.6rem);letter-spacing:-.02em;line-height:1.02;margin:18px 0 26px;max-width:18ch}
+.contact h2 em{font-style:italic;color:var(--panel-em)}
+.contact .links{display:flex;flex-wrap:wrap;gap:14px}
+.contact .links a{font-size:.92rem;padding:14px 24px;border:1px solid var(--panel-border);border-radius:2px;transition:all .2s}
+.contact .links a.primary{background:var(--panel-fg);color:var(--panel-bg);border-color:var(--panel-fg);font-weight:600}
+.contact .links a:hover{background:var(--brass);border-color:var(--brass);color:#fff}
+
+/* ---------- footer ---------- */
+footer{padding:30px 0;background:var(--foot-bg);color:var(--foot-fg)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-size:.82rem;align-items:center}
+footer .fnav{display:flex;gap:20px;flex-wrap:wrap}
+footer .fnav a:hover{color:#fff}
+
+
+/* ===========================================================
+   COLOUR THEMES  (the floating picker switches these)
+   :root above is the default "Editorial" theme.
+   =========================================================== */
+[data-theme="midnight"]{
+  --paper:#16151E;--card:#201E2B;--ink:#ECEAF3;--soft:#9E99AE;--line:#322E40;
+  --brass:#E0A94E;--green:#86B8A6;--green-deep:#0E0D15;--btn-fg:#16151E;
+  --panel-bg:#0E0D15;--panel-fg:#ECEAF3;--panel-accent:#E0A94E;--panel-em:#EEC97F;
+  --panel-border:rgba(236,234,243,.35);--foot-bg:#0A0910;--foot-fg:rgba(236,234,243,.6);
+}
+[data-theme="ocean"]{
+  --paper:#EEF1F4;--card:#F7F9FB;--ink:#14202B;--soft:#566371;--line:#C9D3DC;
+  --brass:#C77D3A;--green:#1F5A6E;--green-deep:#143F4E;--btn-fg:#EEF1F4;
+  --panel-bg:#1F5A6E;--panel-fg:#EEF1F4;--panel-accent:#E1B07A;--panel-em:#F0C892;
+  --panel-border:rgba(238,241,244,.5);--foot-bg:#143F4E;--foot-fg:rgba(238,241,244,.72);
+}
+[data-theme="wine"]{
+  --paper:#F5EEEB;--card:#FCF6F3;--ink:#251A1C;--soft:#6E5A5C;--line:#DCC9C6;
+  --brass:#B07A2E;--green:#7A2E3B;--green-deep:#5E232E;--btn-fg:#F5EEEB;
+  --panel-bg:#7A2E3B;--panel-fg:#F5EEEB;--panel-accent:#E0B27C;--panel-em:#EDC894;
+  --panel-border:rgba(245,238,235,.5);--foot-bg:#5E232E;--foot-fg:rgba(245,238,235,.72);
+}
+
+/* ---------- floating theme picker ---------- */
+.theme-pick{position:fixed;right:16px;bottom:16px;z-index:60;display:flex;align-items:center;gap:8px;
+  background:var(--card);border:1px solid var(--line);border-radius:100px;padding:8px 13px;
+  box-shadow:0 4px 22px rgba(0,0,0,.14)}
+.theme-pick__label{font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);font-weight:600}
+.swatch{width:20px;height:20px;border-radius:50%;border:2px solid var(--line);background:var(--sw);
+  cursor:pointer;padding:0;transition:transform .15s}
+.swatch:hover{transform:scale(1.15)}
+.swatch.is-active{border-color:var(--ink);box-shadow:0 0 0 2px var(--paper),0 0 0 4px var(--ink)}
+@media(max-width:560px){.theme-pick{right:10px;bottom:10px;padding:7px 10px;gap:6px}.theme-pick__label{display:none}}
+@media (prefers-reduced-motion:reduce){body{transition:none}}
