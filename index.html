@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joan Ogeto — Freelance Writing &amp; Support</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F4EEE2;
+    --card:#FBF7EE;
+    --ink:#22201A;
+    --soft:#6A6153;
+    --line:#D8CFBD;
+    --green:#234A3C;
+    --green-deep:#1A382D;
+    --brass:#A97722;
+    --max:1080px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{
+    background:var(--paper);color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;line-height:1.6;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 30px}
+  .label{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600}
+
+  /* nav */
+  .nav{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .nav .name{font-family:'Fraunces';font-weight:600;font-size:1.1rem;letter-spacing:-.01em}
+  .nav .name b{color:var(--green)}
+  .nav .links{display:flex;gap:26px}
+  .nav .links a{color:var(--soft);font-size:.85rem;transition:color .2s}
+  .nav .links a:hover{color:var(--green)}
+  @media(max-width:620px){.nav .links{display:none}}
+
+  /* hero / masthead */
+  .hero{padding:96px 0 70px;border-bottom:2px solid var(--ink);position:relative}
+  .hero .eyebrow{color:var(--brass);margin-bottom:34px}
+  .hero h1{
+    font-family:'Fraunces';font-weight:600;
+    font-size:clamp(3rem,10vw,7rem);line-height:.92;letter-spacing:-.03em;margin-bottom:8px;
+  }
+  .hero h1 .sub{display:block;font-size:clamp(1.1rem,3vw,1.7rem);color:var(--green);font-weight:500;font-style:italic;letter-spacing:-.01em;margin-top:20px;max-width:22ch;line-height:1.15}
+  .hero .lede{margin-top:34px;max-width:600px;font-size:1.1rem;color:var(--soft)}
+  .hero .lede b{color:var(--ink);font-weight:600}
+  .hero .cta-row{margin-top:38px;display:flex;flex-wrap:wrap;gap:14px}
+  .btn{display:inline-block;font-size:.9rem;font-weight:500;padding:13px 24px;border-radius:2px;transition:all .2s;border:1px solid var(--ink)}
+  .btn.solid{background:var(--green);border-color:var(--green);color:#F4EEE2}
+  .btn.solid:hover{background:var(--green-deep);border-color:var(--green-deep)}
+  .btn.ghost:hover{background:var(--ink);color:var(--paper)}
+
+  .rise{opacity:0;transform:translateY(16px);animation:rise .7s cubic-bezier(.2,.7,.2,1) forwards}
+  .rise.a2{animation-delay:.1s}.rise.a3{animation-delay:.2s}.rise.a4{animation-delay:.3s}
+  @keyframes rise{to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){.rise{animation:none;opacity:1;transform:none}}
+
+  /* section shell */
+  .sec{padding:78px 0;border-bottom:1px solid var(--line)}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:14px}
+  .sec-head .k{color:var(--brass)}
+  .sec-head .rule{flex:1;height:1px;background:var(--line);align-self:center}
+  .sec-title{font-family:'Fraunces';font-weight:600;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-.02em;margin-bottom:8px}
+  .sec-intro{color:var(--soft);max-width:60ch;margin-bottom:40px}
+
+  /* services — contents style */
+  .contents{border-top:1px solid var(--ink)}
+  .entry{
+    display:grid;grid-template-columns:56px 1fr;gap:24px;
+    padding:30px 8px;border-bottom:1px solid var(--line);transition:background .2s;
+  }
+  .entry:hover{background:var(--card)}
+  .entry .no{font-family:'Fraunces';font-size:1.5rem;color:var(--brass);font-weight:500;padding-top:2px}
+  .entry h3{font-family:'Fraunces';font-weight:600;font-size:1.45rem;letter-spacing:-.01em;margin-bottom:10px}
+  .entry p{color:var(--soft);max-width:64ch;font-size:1rem}
+  .entry .chips{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
+  .entry .chips span{font-size:.74rem;letter-spacing:.03em;color:var(--green);border:1px solid var(--line);padding:5px 11px;border-radius:100px;background:var(--card)}
+  @media(max-width:560px){.entry{grid-template-columns:1fr;gap:8px}.entry .no{font-size:1.1rem}}
+
+  /* process */
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:26px}
+  .step{border-top:2px solid var(--green);padding-top:18px}
+  .step .n{font-family:'Fraunces';color:var(--brass);font-size:.9rem;letter-spacing:.1em;margin-bottom:10px;display:block}
+  .step h4{font-family:'Fraunces';font-weight:600;font-size:1.2rem;margin-bottom:8px}
+  .step p{color:var(--soft);font-size:.94rem}
+
+  /* about */
+  .about-grid{display:grid;grid-template-columns:1fr;gap:24px}
+  .about p{font-size:1.15rem;line-height:1.65;max-width:62ch;font-family:'Fraunces';font-weight:400;color:var(--ink)}
+  .about .note{font-family:'Inter';font-size:.85rem;color:var(--brass);margin-top:6px}
+
+  /* contact */
+  .contact{background:var(--green);color:var(--paper);padding:88px 0}
+  .contact .k{color:#D8B877}
+  .contact h2{font-family:'Fraunces';font-weight:600;font-size:clamp(2rem,5.5vw,3.6rem);letter-spacing:-.02em;line-height:1.02;margin:18px 0 26px;max-width:18ch}
+  .contact h2 em{font-style:italic;color:#E4C88A}
+  .contact .links{display:flex;flex-wrap:wrap;gap:14px}
+  .contact .links a{font-size:.92rem;padding:14px 24px;border:1px solid rgba(244,238,226,.5);border-radius:2px;transition:all .2s}
+  .contact .links a.primary{background:var(--paper);color:var(--green);border-color:var(--paper);font-weight:600}
+  .contact .links a:hover{background:var(--brass);border-color:var(--brass);color:#fff}
+  .contact .disc{margin-top:26px;font-size:.82rem;color:rgba(244,238,226,.6)}
+
+  footer{padding:26px 0;background:var(--green-deep);color:rgba(244,238,226,.7)}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:.8rem}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <div class="name">Joan <b>Ogeto</b></div>
+    <div class="links">
+      <a href="#services">Services</a>
+      <a href="#process">How it works</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow label rise">Freelance writing &amp; support services</div>
+    <h1 class="rise a2">
+      Joan Ogeto
+      <span class="sub">Clear writing and dependable help, from first draft to final deadline.</span>
+    </h1>
+    <p class="lede rise a3">
+      I help students, professionals, and small teams turn rough or unfinished work into something
+      <b>polished, organized, and on time</b> — across academic support, CVs, virtual assistance,
+      websites, and AI training tasks. One person, wide range, reliable turnaround.
+    </p>
+    <div class="cta-row rise a4">
+      <a href="#contact" class="btn solid">Start a project</a>
+      <a href="#services" class="btn ghost">See what I do</a>
+    </div>
+  </div>
+</header>
+
+<section class="sec" id="services">
+  <div class="wrap">
+    <div class="sec-head"><span class="k label">Contents</span><span class="rule"></span></div>
+    <h2 class="sec-title">Services</h2>
+    <p class="sec-intro">A range of writing and support work — pick what you need, or bring me something in between.</p>
+
+    <div class="contents">
+      <div class="entry">
+        <div class="no">01</div>
+        <div>
+          <h3>Academic writing support</h3>
+          <p>Research, structure, editing, proofreading, and formatting that sharpen a student's own argument and get it presentation-ready — high school through postgraduate. Clear feedback, correct citations, and clean formatting in APA, MLA, Harvard, or Chicago.</p>
+          <div class="chips"><span>Research support</span><span>Editing &amp; proofreading</span><span>Structuring</span><span>Citations &amp; formatting</span></div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="no">02</div>
+        <div>
+          <h3>CV &amp; résumé writing</h3>
+          <p>Résumés, CVs, and cover letters that present you at your best — specific, well-structured, and tailored to the role you're actually going for. Includes LinkedIn profiles and personal statements.</p>
+          <div class="chips"><span>Résumés &amp; CVs</span><span>Cover letters</span><span>LinkedIn</span><span>Personal statements</span></div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="no">03</div>
+        <div>
+          <h3>Virtual assistance</h3>
+          <p>The recurring work that quietly eats your week — inbox and calendar, research, data entry, formatting, scheduling, and follow-ups. Organized, discreet, and reliable, so you can focus on the parts only you can do.</p>
+          <div class="chips"><span>Inbox &amp; calendar</span><span>Research</span><span>Data entry</span><span>Scheduling</span></div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="no">04</div>
+        <div>
+          <h3>Website building</h3>
+          <p>Clean, professional websites for individuals and small businesses — portfolios, landing pages, and simple business sites built to look sharp, read well, and be easy to update.</p>
+          <div class="chips"><span>Portfolios</span><span>Landing pages</span><span>Small business sites</span></div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="no">05</div>
+        <div>
+          <h3>AI model training tasks</h3>
+          <p>Data annotation, labeling, response evaluation, and prompt-and-response work that helps train and refine AI models — with careful attention to guidelines and consistent, high-quality output.</p>
+          <div class="chips"><span>Data annotation</span><span>Response evaluation</span><span>Prompt work</span><span>Quality review</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="process">
+  <div class="wrap">
+    <div class="sec-head"><span class="k label">Working together</span><span class="rule"></span></div>
+    <h2 class="sec-title">How it works</h2>
+    <p class="sec-intro">A simple, predictable process — you always know what's happening and when.</p>
+    <div class="steps">
+      <div class="step"><span class="n">STEP 01</span><h4>Brief</h4><p>We agree on the scope, tone, format, and deadline before anything starts, so there are no surprises.</p></div>
+      <div class="step"><span class="n">STEP 02</span><h4>Draft</h4><p>You get a first version to react to — early enough that there's real time to shape it.</p></div>
+      <div class="step"><span class="n">STEP 03</span><h4>Revise</h4><p>We refine together until it reads the way you want. Revisions are part of the work, not an add-on.</p></div>
+      <div class="step"><span class="n">STEP 04</span><h4>Deliver</h4><p>Final files, formatted the way you need them, handed over on time.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec about" id="about">
+  <div class="wrap">
+    <div class="sec-head"><span class="k label">About</span><span class="rule"></span></div>
+    <div class="about-grid">
+      <div class="about">
+        <p>I'm Joan — a freelance writer and virtual assistant who likes taking messy, half-finished, or overdue work and handing it back clean. Whether it's a paper that needs structure, a CV that needs to land, an inbox that needs order, or a site that needs building, I care about getting the details right and hitting the deadline.</p>
+        <p class="note">↳ Add a line or two here about your experience, background, or what clients say — it makes this section far stronger.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="k label">Get in touch</div>
+    <h2>Have something you need <em>done well?</em> Let's talk.</h2>
+    <div class="links">
+      <a href="mailto:you@example.com" class="primary">you@example.com</a>
+      <a href="#" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <p class="disc">↳ Replace the email and links above with your real contact details before you share this.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Joan Ogeto</span>
+    <span>Freelance writing &amp; support</span>
+  </div>
+</footer>
+
+</body>
+</html>
